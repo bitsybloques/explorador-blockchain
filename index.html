@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blockchain Explorer</title>
+    <title>Explorador de Blockchain</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Styles -->
     <style>
       body {
@@ -21,7 +21,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center" >
-          <img src="explorer.png">
+          <img src="icono-explorador.png">
           <h1>Explorador de Blockchain</h1>
           <h3> Últimos 20 bloques </h3>
           <table class="table">
@@ -49,24 +49,24 @@
     <script src="web3.min.js"></script>
 
     <script>
-      var provider = 'https://mainnet.infura.io/v3/4e155e36f7b040f49e767a6abf7c4d6b'; //Your Infura Endpoint
-      var web3Provider = new Web3.providers.HttpProvider(provider);
-      var web3 = new Web3(web3Provider);
+      var proveedor = 'https://mainnet.infura.io/v3/4e155e36f7b040f49e767a6abf7c4d6b'; //Your Infura Endpoint
+      var proveedorWeb3 = new Web3.providers.HttpProvider(proveedor);
+      var web3 = new Web3(proveedorWeb3);
 
-var latestBlock = web3.eth.blockNumber;
+var ultimoBloque = web3.eth.blockNumber;
 
 // List blocks in table
       for (var i = 0; i < 20; i++) {
-        var block = web3.eth.getBlock(latestBlock - i);
-        var number = block.number;
-        var hash = block.hash;
-        var time = block.timestamp;
-        var gas = block.gasUsed;
+        var bloque = web3.eth.getBlock(ultimoBloque - i);
+        var numero = bloque.number;
+        var hash = bloque.hash;
+        var hora = bloque.timestamp;
+        var gas = bloque.gasUsed;
         //var sender = web3.eth.getTransaction(hash.from);
-        convertTimestamp(time);
+        convertTimestamp(hora);
 
-function convertTimestamp(time) {
-            var d = new Date(time * 1000), // Convert the passed timestamp to milliseconds
+function convertTimestamp(hora) {
+            var d = new Date(hora * 1000), // Convert the passed timestamp to milliseconds
                 yyyy = d.getFullYear(),
                 mm = ('0' + (d.getMonth() + 1)).slice(-2),  // Months are zero based. Add leading 0.
                 dd = ('0' + d.getDate()).slice(-2),         // Add leading 0.
@@ -74,7 +74,7 @@ function convertTimestamp(time) {
                 h = hh,
                 min = ('0' + d.getMinutes()).slice(-2),     // Add leading 0.
                 ampm = 'AM',
-                time;
+                hora;
 
 if (hh > 12) {
                 h = hh - 12;
@@ -87,11 +87,11 @@ if (hh > 12) {
             }
 
 // ie: 2014-03-24, 3:00 PM
-            time1 = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
-            return time1;
+            hora1 = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+            return hora1;
         }
 
-        $('tbody').append("<tr><td>" + hash + "</td><td>" + number + "</td><td>" + time1 + "</td><td>" + gas + "</tr>");
+        $('tbody').append("<tr><td>" + hash + "</td><td>" + numero + "</td><td>" + hora1 + "</td><td>" + gas + "</tr>");
       }
 
     </script>
