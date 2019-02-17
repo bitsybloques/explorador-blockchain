@@ -55,7 +55,7 @@
 
 var ultimoBloque = web3.eth.blockNumber;
 
-// List blocks in table
+// Impresión de la lista de bloques en la tabla
       for (var i = 0; i < 20; i++) {
         var bloque = web3.eth.getBlock(ultimoBloque - i);
         var numero = bloque.number;
