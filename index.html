@@ -49,7 +49,7 @@
     <script src="web3.min.js"></script>
 
     <script>
-      var proveedor = 'https://mainnet.infura.io/v3/4e155e36f7b040f49e767a6abf7c4d6b'; //Your Infura Endpoint
+      var proveedor = 'https://mainnet.infura.io/v3/xxx'; //Infura Endpoint o proveedor deseado
       var proveedorWeb3 = new Web3.providers.HttpProvider(proveedor);
       var web3 = new Web3(proveedorWeb3);
 
@@ -66,13 +66,13 @@ var ultimoBloque = web3.eth.blockNumber;
         convertTimestamp(hora);
 
 function convertTimestamp(hora) {
-            var d = new Date(hora * 1000), // Convert the passed timestamp to milliseconds
+            var d = new Date(hora * 1000), // Convertimos el timestamp en milisegundos
                 yyyy = d.getFullYear(),
-                mm = ('0' + (d.getMonth() + 1)).slice(-2),  // Months are zero based. Add leading 0.
-                dd = ('0' + d.getDate()).slice(-2),         // Add leading 0.
+                mm = ('0' + (d.getMonth() + 1)).slice(-2),  // Sumamos 1, ya que los meses son zero-based. Añadimos un 0 a la izq.
+                dd = ('0' + d.getDate()).slice(-2),         // Añadimos un 0 a la izq.
                 hh = d.getHours(),
                 h = hh,
-                min = ('0' + d.getMinutes()).slice(-2),     // Add leading 0.
+                min = ('0' + d.getMinutes()).slice(-2),     // Añadimos un 0 a la izq.
                 ampm = 'AM',
                 hora;
 
@@ -86,7 +86,7 @@ if (hh > 12) {
                 h = 12;
             }
 
-// ie: 2014-03-24, 3:00 PM
+// formato resultante: 2018-02-17, 3:00 PM
             hora1 = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
             return hora1;
         }
